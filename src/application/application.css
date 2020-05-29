@@ -1,0 +1,84 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.text-input
+{
+	-fx-prompt-text-fill: #D4CEE3;
+}
+
+.button1{
+	-fx-background-color:  #b81616;
+	-fx-text-fill: #ffffff;
+	-fx-background-radius: 8.0;
+}
+
+.button1:hover{
+	-fx-background-color: #a8180d;
+}
+
+.button1:pressed{
+	-fx-text-fill : #e07067;
+	-fx-background-color: #a8180d;
+}
+
+.button1:active{
+	-fx-text-fill : #80AFF5;
+}
+
+.button2{
+	-fx-background-color: #de3421;
+	-fx-background-radius: 5.0;
+	-fx-text-fill: #ffffff;
+	
+	-fx-border-radius: 5.0;
+}
+
+.button2:hover{
+	-fx-background-color: #c7210e;
+}
+
+.button2:pressed{
+	-fx-background-color: #c7210e;
+
+}
+
+.button3{
+	-fx-background-color : linear-gradient(to top left, #35ACF1, #F6B46F);
+	-fx-background-radius : 12.0;
+	-fx-border-style : solid;
+	-fx-border-radius : 12.0;
+	-fx-border-insets : -5.0;
+	-fx-border-color : linear-gradient(to top left, #35ACF1, #F6B46F); 
+}
+
+.button3:hover{
+	-fx-background-color : linear-gradient(to top left, #F6B46F, #35ACF1);
+	-fx-background-radius : 12.0;
+	-fx-border-style : solid;
+	-fx-border-radius : 12.0;
+	-fx-border-insets : -5.0;
+	-fx-border-color : linear-gradient(to top left, #F6B46F, #35ACF1); 
+}
+
+.button3:pressed{
+	-fx-background-color : linear-gradient(to top left, #35ACF1, #F6B46F);
+	-fx-background-radius : 12.0;
+	-fx-border-style : solid;
+	-fx-border-radius : 12.0;
+	-fx-border-insets : -5.0;
+	-fx-border-color : linear-gradient(to top left, #35ACF1, #F6B46F); 
+}
+
+.combo-box{
+	-fx-background-color : #141124;
+	-fx-border-color : #515658;
+	-fx-border-radius : 30;
+}
+
+.combo-box:hover{
+	-fx-background-color : #141124;
+	
+}
+
+.linear-grad{
+	-fx-background-color : linear-gradient(to bottom left, #4d0099,#3300cc);
+}
