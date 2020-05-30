@@ -1,10 +1,10 @@
 package elements.creators;
 
 import elements.Element;
+import elements.ListElement;
 
 public class ListElementCreator {
-	public Element createElement() {
-		return null;
-		
+	public static Element createElement(String value) {
+		return new ListElement(value);
 	}
 }
