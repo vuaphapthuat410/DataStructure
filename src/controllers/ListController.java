@@ -3,9 +3,10 @@ package controllers;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
-
+import functions.General;
 import functions.LinkedListActions;
 import functions.ListActions;
+import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,6 +22,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Line;
+import javafx.util.Duration;
 
 public class ListController implements Initializable {
 
@@ -84,17 +86,19 @@ public class ListController implements Initializable {
 
 		arrowList = FXCollections.observableArrayList();
 		arrowList.addAll(arrowD1, arrowD2, arrowD3, arrowD4, arrowD5, arrowD6, arrowD7);
-
+		
+		
+		pnListVisual.getChildren().addAll(linkedList.getArrowList());
+		for (int i = 0; i < linkedList.getArrowList().size(); i++) {
+			General.FadeInOut(linkedList.getArrowList().get(i), 1, 0, 0.01);
+		}
 	}
 
 	public void addItem(ActionEvent e) {
 		String value = tfValue.getText();
 		linkedList.add(value);
 		pnListVisual.getChildren().add(linkedList.getElementsList().getLast().getShape());
-		for (int i = 1; i < linkedList.getElementsList().size(); i++) {
-			arrowList.get(i - 1).setVisible(true);
-		}
-
+		
 		printList();
 		System.out.println("Value input: " + value);
 		tfValue.clear();
@@ -102,31 +106,47 @@ public class ListController implements Initializable {
 	}
 
 	public void deleteItem(ActionEvent e) {
-		deleteShape(linkedList.getElementsList().getFirst().getShape());
+		if(linkedList.getElementsList().size() != 0 )
+			deleteShape(linkedList.getElementsList().getFirst().getShape());
 		linkedList.delete();
-		if(linkedList.getElementsList().size()>0)
-			arrowList.get(linkedList.getElementsList().size()-1).setVisible(false);
 		printList();
 	}
 
 	public void addItemByIndex(ActionEvent e) {
 		String value = tfValue.getText();
-		int index = Integer.parseInt(tfIndex.getText());
+		int index = 0;
+		try {
+			index = Integer.parseInt(tfIndex.getText());
+		} catch (Exception e2) {
+			// TODO: handle exception
+			General.showAlertWithoutHeaderText("Alert", "Index must be an integer.");
+			return;
+		}
+
 		linkedList.addByIndex(value, index);
-		pnListVisual.getChildren().add(linkedList.getElementsList().get(index).getShape());
+		if(index < linkedList.getElementsList().size())
+			pnListVisual.getChildren().add(linkedList.getElementsList().get(index).getShape());
+
 		printList();
 		tfValue.clear();
 		tfIndex.clear();
 	}
 
 	public void deleteItemByIndex(ActionEvent e) {
-		int index = Integer.parseInt(tfIndex.getText());
-		deleteShape(linkedList.getElementsList().get(index).getShape());
+		int index = 0;
+		try {
+			index = Integer.parseInt(tfIndex.getText());
+		} catch (Exception e2) {
+			// TODO: handle exception
+			General.showAlertWithoutHeaderText("Alert", "Index must be an integer.");
+			return;
+		}
+		if(linkedList.getElementsList().size() != 0 && linkedList.getElementsList().size() > index)
+			deleteShape(linkedList.getElementsList().get(index).getShape());
 		linkedList.deleteByIndex(index);
-		if(linkedList.getElementsList().size()>0)
-			arrowList.get(linkedList.getElementsList().size()-1).setVisible(false);
+
 		printList();
-		tfValue.clear();
+		tfIndex.clear();
 
 	}
 
@@ -139,4 +159,6 @@ public class ListController implements Initializable {
 			System.out.println(linkedList.getElementsList().get(i).getValue().getText());
 		}
 	}
+
+
 }
