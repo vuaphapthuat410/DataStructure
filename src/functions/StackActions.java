@@ -3,15 +3,15 @@ package functions;
 public class StackActions implements Actions{
 
 	@Override
-	public void add(String value) {
+	public boolean add(String value) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
 
 	@Override
-	public void delete() {
+	public boolean delete() {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
 
 }

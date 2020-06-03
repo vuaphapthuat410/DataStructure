@@ -54,12 +54,12 @@ public class LinkedListActions implements ListActions{
 
 	
 	@Override
-	public void add(String value) {
+	public boolean add(String value) {
 		// TODO Auto-generated method stub
 //		Create new element
 		if(ElementsList.size() >= General.MAX_LINKED_LIST_ITEMS) {
 			General.showAlertWithoutHeaderText("Alert", "You can only create 8 elements");
-			return;
+			return false;
 		}
 		Element node = ListElementCreator.createElement(value);
 		ElementsList.addLast(node);
@@ -77,15 +77,15 @@ public class LinkedListActions implements ListActions{
 		int location = ElementsList.size();
 		if (location > 1)
 			General.FadeInOut(arrowList.get(location - 2), 0, 1, 1);
-			
+		return true;	
 	}
 
 	@Override
-	public void delete() {
+	public boolean delete() {
 		// TODO Auto-generated method stub
 		if(ElementsList.size() == 0) {
 			General.showAlertWithoutHeaderText("Alert", "Linked list is empty");
-			return;
+			return false;
 		}
 		if (ElementsList.size() > 1) {
 			for (int i = ElementsList.size() - 1; i > 0; i--) {
@@ -118,17 +118,18 @@ public class LinkedListActions implements ListActions{
 				General.FadeInOut(arrowList.get(i - 1), 0, 1, 2.5);
 			}
 		}
+		return true;
 	}
 	
 	@Override
-	public void addByIndex(String value,int index) {
+	public boolean addByIndex(String value,int index) {
 		// TODO Auto-generated method stub
 		if(ElementsList.size() >= General.MAX_LINKED_LIST_ITEMS) {
 			General.showAlertWithoutHeaderText("Alert", "You can only create 8 elements");
-			return;
+			return false;
 		}else if(index >= ElementsList.size()) {
 			General.showAlertWithoutHeaderText("Alert", "Index out of range");
-			return;
+			return false;
 		}
 		
 		// Fade out arrow after location of added item
@@ -166,18 +167,18 @@ public class LinkedListActions implements ListActions{
 			if(i!=0)
 				General.FadeInOut(arrowList.get(i-1), 0, 1, 2.5);
 		}
-
+		return true;
 	}
 
 	@Override
-	public void deleteByIndex(int index) {
+	public boolean deleteByIndex(int index) {
 		// TODO Auto-generated method stub
 		if(ElementsList.size() == 0) {
 			General.showAlertWithoutHeaderText("Alert", "Linked list is empty");
-			return;
+			return false;
 		}else if(ElementsList.size() <= index) {
 			General.showAlertWithoutHeaderText("Alert", "Index out of range");
-			return;
+			return false;
 		}else{
 			for (int i = ElementsList.size() - 1; i >= index; i--) {
 //				arrowList.get(i).setVisible(false);
@@ -208,7 +209,7 @@ public class LinkedListActions implements ListActions{
 			if(i != 0)
 				General.FadeInOut(arrowList.get(i - 1), 0, 1, 2.5);
 		}
-
+		return true;
 		
 	}
 	

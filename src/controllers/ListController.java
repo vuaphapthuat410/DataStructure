@@ -96,9 +96,8 @@ public class ListController implements Initializable {
 
 	public void addItem(ActionEvent e) {
 		String value = tfValue.getText();
-		linkedList.add(value);
-		pnListVisual.getChildren().add(linkedList.getElementsList().getLast().getShape());
-		
+		if(linkedList.add(value))
+			pnListVisual.getChildren().add(linkedList.getElementsList().getLast().getShape());
 		printList();
 		System.out.println("Value input: " + value);
 		tfValue.clear();
@@ -123,8 +122,7 @@ public class ListController implements Initializable {
 			return;
 		}
 
-		linkedList.addByIndex(value, index);
-		if(index < linkedList.getElementsList().size())
+		if(linkedList.addByIndex(value, index))
 			pnListVisual.getChildren().add(linkedList.getElementsList().get(index).getShape());
 
 		printList();

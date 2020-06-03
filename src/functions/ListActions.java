@@ -1,6 +1,6 @@
 package functions;
 
 public interface ListActions extends Actions {
-	public void addByIndex(String value,int index);
-	public void deleteByIndex(int index);
+	public boolean addByIndex(String value,int index);
+	public boolean deleteByIndex(int index);
 }

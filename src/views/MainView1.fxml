@@ -90,15 +90,10 @@
                               <Image url="@../images/home_new.jpg" />
                            </image>
                         </ImageView>
-                        <Label layoutX="152.0" layoutY="247.0" prefHeight="25.0" prefWidth="420.0" text="Topic:   Data Structure Visualization">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
-                        <GridPane layoutX="189.0" layoutY="310.0" prefHeight="131.0" prefWidth="346.0">
+                        <GridPane layoutX="168.0" layoutY="312.0" prefHeight="131.0" prefWidth="403.0">
                           <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" prefWidth="98.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="248.0" minWidth="10.0" prefWidth="248.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" prefWidth="99.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="316.0" minWidth="10.0" prefWidth="304.0" />
                           </columnConstraints>
                           <rowConstraints>
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -108,19 +103,47 @@
                             <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label text="Students:" GridPane.rowIndex="2" />
-                              <Label prefHeight="16.0" prefWidth="247.0" text="Dao Dang Huy             - 20176782" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Label prefHeight="16.0" prefWidth="263.0" text="Nguyen Thi Hai Thanh - 20176871" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <Label prefHeight="16.0" prefWidth="253.0" text="Le Hoang Manh           - 20176999" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              <Label text="Teacher:" />
-                              <Label text="Bui Thi Mai Anh" GridPane.columnIndex="1" />
+                              <Label text="Students:" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Chilanka Regular" size="18.0" />
+                                 </font></Label>
+                              <Label prefHeight="27.0" prefWidth="329.0" text="Dao Dang Huy               - 20176782" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Chilanka Regular" size="18.0" />
+                                 </font></Label>
+                              <Label prefHeight="27.0" prefWidth="310.0" text="Nguyen Thi Hai Thanh - 20176871" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Chilanka Regular" size="18.0" />
+                                 </font></Label>
+                              <Label prefHeight="27.0" prefWidth="304.0" text="Le Hoang Manh           - 20176999" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Chilanka Regular" size="18.0" />
+                                 </font></Label>
+                              <Label text="Teacher:">
+                                 <font>
+                                    <Font name="Chilanka Regular" size="18.0" />
+                                 </font></Label>
+                              <Label text="Bui Thi Mai Anh" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font name="Chilanka Regular" size="18.0" />
+                                 </font></Label>
                            </children>
                         </GridPane>
-                        <Label alignment="CENTER" layoutX="131.0" layoutY="530.0" prefHeight="21.0" prefWidth="461.0" text="Ha Noi University of Science and Technology">
+                        <Label alignment="CENTER" layoutX="139.0" layoutY="535.0" prefHeight="21.0" prefWidth="461.0" text="Ha Noi University of Science and Technology">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
+                        <ImageView fitHeight="65.0" fitWidth="562.0" layoutX="82.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/cooltext-357171372396115.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="48.0" fitWidth="47.0" layoutX="98.0" layoutY="521.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/hust_logo.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </Pane>
                </children>
