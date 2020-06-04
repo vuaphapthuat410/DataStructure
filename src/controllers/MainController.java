@@ -63,5 +63,11 @@ public class MainController implements Initializable {
 		mainView.getChildren().add(listPane);
 
 	}
+        
+        @FXML
+        private void goBalancedTree(ActionEvent event) throws IOException {
+                Pane TreePane = FXMLLoader.load(getClass().getResource("../views/TreeUI.fxml"));
+                mainView.getChildren().add(TreePane);
+        }
 
 }
