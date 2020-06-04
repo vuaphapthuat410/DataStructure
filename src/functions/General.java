@@ -10,6 +10,8 @@ import javafx.util.Duration;
 
 public class General {
 	public static final int MAX_LINKED_LIST_ITEMS = 8;
+	public static final int MAX_STACK_SIZE = 8;
+	
 	public static void showAlertWithoutHeaderText(String title,String content) {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle(title);
