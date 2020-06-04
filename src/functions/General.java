@@ -47,4 +47,8 @@ public class General {
 		way.play();
 
 	}
+	
+	public static void deleteShape(Pane elementShape,Pane parentPane) {
+		parentPane.getChildren().remove(elementShape);
+	}
 }

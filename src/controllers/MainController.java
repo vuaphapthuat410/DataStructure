@@ -28,26 +28,26 @@ import javafx.scene.text.Text;
 public class MainController implements Initializable {
 
 	@FXML
-    private Button btnStack;
+	private Button btnStack;
 
-    @FXML
-    private Button btnList;
+	@FXML
+	private Button btnList;
 
-    @FXML
-    private Button btnTree;
+	@FXML
+	private Button btnTree;
 
-    @FXML
-    private Button btnAbout;
+	@FXML
+	private Button btnAbout;
 
-    @FXML
-    private StackPane mainView;
+	@FXML
+	private StackPane mainView;
 
-    @FXML
-    private Pane pnAbout;
+	@FXML
+	private Pane pnAbout;
 
-    @FXML
-    private Pane pnApp;
-    
+	@FXML
+	private Pane pnApp;
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
@@ -66,11 +66,16 @@ public class MainController implements Initializable {
 		mainView.getChildren().add(listPane);
 
 	}
-        
-        @FXML
-        private void goBalancedTree(ActionEvent event) throws IOException {
-                Pane TreePane = FXMLLoader.load(getClass().getResource("../views/TreeUI.fxml"));
-                mainView.getChildren().add(TreePane);
-        }
+
+	@FXML
+	private void goBalancedTree(ActionEvent event) throws IOException {
+		Pane TreePane = FXMLLoader.load(getClass().getResource("../views/TreeUI.fxml"));
+		mainView.getChildren().add(TreePane);
+	}
+	
+	public void goStack(ActionEvent e) throws IOException {
+		Pane stackPane = FXMLLoader.load(getClass().getResource("../views/StackUI.fxml"));
+		mainView.getChildren().add(stackPane);
+	}
 
 }

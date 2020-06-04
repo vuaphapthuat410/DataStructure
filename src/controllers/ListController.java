@@ -1,12 +1,10 @@
 package controllers;
 
 import java.net.URL;
-import java.util.LinkedList;
 import java.util.ResourceBundle;
 import functions.General;
 import functions.LinkedListActions;
-import functions.ListActions;
-import javafx.animation.FadeTransition;
+import functions.VisualActions;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,14 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.shape.Line;
-import javafx.util.Duration;
 
 public class ListController implements Initializable {
 
@@ -68,7 +60,7 @@ public class ListController implements Initializable {
 	@FXML
 	private Group arrowD3;
 
-	LinkedListActions linkedList = new LinkedListActions();
+	VisualActions viLinkedList = new LinkedListActions();
 
 	ObservableList<Node> arrowList;
 
@@ -87,17 +79,16 @@ public class ListController implements Initializable {
 		arrowList = FXCollections.observableArrayList();
 		arrowList.addAll(arrowD1, arrowD2, arrowD3, arrowD4, arrowD5, arrowD6, arrowD7);
 		
-		
-		pnListVisual.getChildren().addAll(linkedList.getArrowList());
-		for (int i = 0; i < linkedList.getArrowList().size(); i++) {
-			General.FadeInOut(linkedList.getArrowList().get(i), 1, 0, 0.01);
+		LinkedListActions temp = (LinkedListActions)viLinkedList;
+		pnListVisual.getChildren().addAll(temp.getArrowList());
+		for (int i = 0; i < temp.getArrowList().size(); i++) {
+			General.FadeInOut(temp.getArrowList().get(i), 1, 0, 0.01);
 		}
 	}
 
 	public void addItem(ActionEvent e) {
 		String value = tfValue.getText();
-		if(linkedList.add(value))
-			pnListVisual.getChildren().add(linkedList.getElementsList().getLast().getShape());
+		viLinkedList.add(value,pnListVisual);
 		printList();
 		System.out.println("Value input: " + value);
 		tfValue.clear();
@@ -105,9 +96,8 @@ public class ListController implements Initializable {
 	}
 
 	public void deleteItem(ActionEvent e) {
-		if(linkedList.getElementsList().size() != 0 )
-			deleteShape(linkedList.getElementsList().getFirst().getShape());
-		linkedList.delete();
+		
+		viLinkedList.delete(pnListVisual);
 		printList();
 	}
 
@@ -122,8 +112,7 @@ public class ListController implements Initializable {
 			return;
 		}
 
-		if(linkedList.addByIndex(value, index))
-			pnListVisual.getChildren().add(linkedList.getElementsList().get(index).getShape());
+		viLinkedList.addByIndex(value, index,pnListVisual);
 
 		printList();
 		tfValue.clear();
@@ -139,22 +128,18 @@ public class ListController implements Initializable {
 			General.showAlertWithoutHeaderText("Alert", "Index must be an integer.");
 			return;
 		}
-		if(linkedList.getElementsList().size() != 0 && linkedList.getElementsList().size() > index)
-			deleteShape(linkedList.getElementsList().get(index).getShape());
-		linkedList.deleteByIndex(index);
+		
+		viLinkedList.deleteByIndex(index,pnListVisual);
 
 		printList();
 		tfIndex.clear();
 
 	}
 
-	public void deleteShape(Pane elementShape) {
-		pnListVisual.getChildren().remove(elementShape);
-	}
 
 	public void printList() {
-		for (int i = 0; i < linkedList.getElementsList().size(); i++) {
-			System.out.println(linkedList.getElementsList().get(i).getValue().getText());
+		for (int i = 0; i < viLinkedList.getElementsList().size(); i++) {
+			System.out.println(viLinkedList.getElementsList().get(i).getValue().getText());
 		}
 	}
 

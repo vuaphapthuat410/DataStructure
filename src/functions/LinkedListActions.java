@@ -5,22 +5,14 @@ import java.util.LinkedList;
 import elements.Arrow;
 import elements.Element;
 import elements.creators.ListElementCreator;
-import javafx.animation.Animation;
-import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.util.Duration;
 
-public class LinkedListActions implements ListActions{
+public class LinkedListActions extends VisualActions{
 	
-	private LinkedList<Element> ElementsList;
 	private ObservableList<Node> arrowList;
-
-
 
 	public LinkedListActions() {
 		super();
@@ -35,14 +27,6 @@ public class LinkedListActions implements ListActions{
 		Arrow arrowD7 = new Arrow(545, 184, 545, 137, 10);
 		arrowList.addAll(arrowD1, arrowD2, arrowD3, arrowD4, arrowD5, arrowD6, arrowD7);
 	}
-
-	public LinkedList<Element> getElementsList() {
-		return ElementsList;
-	}
-
-	public void setElementsList(LinkedList<Element> elementsList) {
-		ElementsList = elementsList;
-	}
 	
 	public ObservableList<Node> getArrowList() {
 		return arrowList;
@@ -54,7 +38,7 @@ public class LinkedListActions implements ListActions{
 
 	
 	@Override
-	public boolean add(String value) {
+	public boolean add(String value,Pane pane) {
 		// TODO Auto-generated method stub
 //		Create new element
 		if(ElementsList.size() >= General.MAX_LINKED_LIST_ITEMS) {
@@ -77,11 +61,13 @@ public class LinkedListActions implements ListActions{
 		int location = ElementsList.size();
 		if (location > 1)
 			General.FadeInOut(arrowList.get(location - 2), 0, 1, 1);
+		
+		pane.getChildren().add(node.getShape());
 		return true;	
 	}
 
 	@Override
-	public boolean delete() {
+	public boolean delete(Pane pane) {
 		// TODO Auto-generated method stub
 		if(ElementsList.size() == 0) {
 			General.showAlertWithoutHeaderText("Alert", "Linked list is empty");
@@ -94,7 +80,9 @@ public class LinkedListActions implements ListActions{
 			}
 		}
 		
+		General.deleteShape(ElementsList.getFirst().getShape(), pane);		
 		ElementsList.remove();
+		
 		Pane temp;
 		for(int i=0;i<ElementsList.size();i++) {
 			temp = ElementsList.get(i).getShape();
@@ -122,7 +110,7 @@ public class LinkedListActions implements ListActions{
 	}
 	
 	@Override
-	public boolean addByIndex(String value,int index) {
+	public boolean addByIndex(String value,int index, Pane pane) {
 		// TODO Auto-generated method stub
 		if(ElementsList.size() >= General.MAX_LINKED_LIST_ITEMS) {
 			General.showAlertWithoutHeaderText("Alert", "You can only create 8 elements");
@@ -160,7 +148,7 @@ public class LinkedListActions implements ListActions{
 			node.getShape().setLayoutX(430);
 			node.getShape().setLayoutY(94+(3-location%5)*90);
 		}
-
+		pane.getChildren().add(node.getShape());
 		// Fade in arrow after location of added item
 		for (int i = index; i < ElementsList.size(); i++) {
 //			arrowList.get(i).setVisible(false);
@@ -171,7 +159,7 @@ public class LinkedListActions implements ListActions{
 	}
 
 	@Override
-	public boolean deleteByIndex(int index) {
+	public boolean deleteByIndex(int index, Pane pane) {
 		// TODO Auto-generated method stub
 		if(ElementsList.size() == 0) {
 			General.showAlertWithoutHeaderText("Alert", "Linked list is empty");
@@ -186,6 +174,9 @@ public class LinkedListActions implements ListActions{
 					General.FadeInOut(arrowList.get(i - 1), 1, 0, 1);
 			}
 		}
+		
+		General.deleteShape(ElementsList.get(index).getShape(), pane);
+
 		ElementsList.remove(index);
 		Pane temp;
 		for(int i=index;i<ElementsList.size();i++) {
@@ -212,6 +203,7 @@ public class LinkedListActions implements ListActions{
 		return true;
 		
 	}
+	
 	
 	
 }

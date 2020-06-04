@@ -43,7 +43,7 @@
                         <Button fx:id="btnAddByIdx" alignment="CENTER" minWidth="120.0" mnemonicParsing="false" onAction="#addByIdx" prefHeight="26.0" prefWidth="120.0" styleClass="button2" stylesheets="@../application/application.css" text="Add by Index" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <Button fx:id="btnDel" alignment="CENTER" mnemonicParsing="false" onAction="#delItem" prefHeight="26.0" prefWidth="110.0" styleClass="button2" stylesheets="@../application/application.css" text="Delete Item" GridPane.columnIndex="3" />
                         <Button fx:id="btnDelByIdx" alignment="CENTER" minWidth="125.0" mnemonicParsing="false" onAction="#delByIdx" prefHeight="26.0" prefWidth="125.0" styleClass="button2" stylesheets="@../application/application.css" text="Delete by index" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <ComboBox fx:id="optsShape" prefWidth="130.0" promptText="Icon " style="-fx-background-color: white;" />
+                        <ComboBox fx:id="optsShape" prefWidth="130.0" promptText="Icon " style="-fx-background-color: #ffffff; -fx-border-radius: 2; -fx-border-color: #ffffff;" />
                      </children>
                   </GridPane>
                </children>
