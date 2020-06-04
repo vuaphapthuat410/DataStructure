@@ -126,7 +126,8 @@
                               <Label text="Bui Thi Mai Anh" GridPane.columnIndex="1">
                                  <font>
                                     <Font name="Chilanka Regular" size="18.0" />
-                                 </font></Label>
+                                 </font>
+                              </Label>
                            </children>
                         </GridPane>
                         <Label alignment="CENTER" layoutX="139.0" layoutY="535.0" prefHeight="21.0" prefWidth="461.0" text="Ha Noi University of Science and Technology">
@@ -146,6 +147,7 @@
                         </ImageView>
                      </children>
                   </Pane>
+                  <Pane fx:id="pnApp" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" />
                </children>
             </StackPane>
          </center>

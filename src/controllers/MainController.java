@@ -28,23 +28,26 @@ import javafx.scene.text.Text;
 public class MainController implements Initializable {
 
 	@FXML
-	private Button btnStack;
+    private Button btnStack;
 
-	@FXML
-	private Button btnList;
+    @FXML
+    private Button btnList;
 
-	@FXML
-	private Button btnTree;
+    @FXML
+    private Button btnTree;
 
-	@FXML
-	private Button btnAbout;
+    @FXML
+    private Button btnAbout;
 
-	@FXML
-	private StackPane mainView;
+    @FXML
+    private StackPane mainView;
 
-	@FXML
-	private Pane pnAbout;
+    @FXML
+    private Pane pnAbout;
 
+    @FXML
+    private Pane pnApp;
+    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
