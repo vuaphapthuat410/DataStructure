@@ -40,11 +40,11 @@ public class StackActions implements Actions{
 
 	
 	@Override
-	public void add(String value) {
+	public boolean add(String value) {
 		// TODO Auto-generated method stub
 		if(stack.size() >= General.MAX_STACK_SIZE) {
 			General.showAlertWithoutHeaderText("Alert", "You can only create " + General.MAX_STACK_SIZE + " elements");
-			return;
+			return false;
 		}
 		Element node = StackElementCreator.createElement(value);
 		stack.push(node);
@@ -53,19 +53,21 @@ public class StackActions implements Actions{
 		// node.getShape().setLayoutY(General.MAX_STACK_SIZE*42 - stack.size()*42);
 		node.getShape().setLayoutY(100);
 		General.goUpDown(node.getShape(), General.MAX_STACK_SIZE*42 - stack.size()*42);
-	}
+	  return true;
+  }
 
-		@Override
-	public void delete() {
+	@Override
+	public boolean delete() {
 		// TODO Auto-generated method stub
 		if(stack.size() == 0) {
 			General.showAlertWithoutHeaderText("Alert", "Stack is empty");
-			return;
+			return false;
 		}
 		else {
 			Element node = stack.peek();
 			General.goUpDown(node.getShape(), General.MAX_STACK_SIZE*42 );
 			stack.pop();
+      return true;
 		}		
 	}
 	
@@ -92,7 +94,8 @@ public class StackActions implements Actions{
 		else{ 
 			Element peak = stack.peek();
 			return peak;
-		}
+		}		
 	}
+
 	
 }

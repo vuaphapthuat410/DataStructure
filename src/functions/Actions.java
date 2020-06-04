@@ -1,6 +1,6 @@
 package functions;
 
 public interface Actions {
-	public void add(String value);
-	public void delete();
+	public boolean add(String value);
+	public boolean delete();
 }
