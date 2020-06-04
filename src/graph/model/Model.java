@@ -1,0 +1,202 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package graph.model;
+
+/**
+ *
+ * @author vuaphapthuat410
+ */
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import graph.cell.*;
+
+import graph.line.Edge;
+
+public class Model {
+
+    Cell graphParent;
+
+    List<Cell> allCells;
+    List<Cell> addedCells;
+    List<Cell> removedCells;
+
+    List<Edge> allEdges;
+    List<Edge> addedEdges;
+    List<Edge> removedEdges;
+
+    Map<String,Cell> cellMap; // <id,cell>
+
+    public Model() {
+
+         graphParent = new Cell( "_ROOT_");
+
+         // clear model, create lists
+         clear();
+    }
+
+    public void clear() {
+
+        allCells = new ArrayList<>();
+        addedCells = new ArrayList<>();
+        removedCells = new ArrayList<>();
+
+        allEdges = new ArrayList<>();
+        addedEdges = new ArrayList<>();
+        removedEdges = new ArrayList<>();
+
+        cellMap = new HashMap<>(); // <id,cell>
+
+    }
+
+    public void clearAddedLists() {
+        addedCells.clear();
+        addedEdges.clear();
+    }
+
+    public List<Cell> getAddedCells() {
+        return addedCells;
+    }
+
+    public List<Cell> getRemovedCells() {
+        return removedCells;
+    }
+
+    public List<Cell> getAllCells() {
+        return allCells;
+    }
+
+    public List<Edge> getAddedEdges() {
+        return addedEdges;
+    }
+
+    public List<Edge> getRemovedEdges() {
+        return removedEdges;
+    }
+
+    public List<Edge> getAllEdges() {
+        return allEdges;
+    }
+
+    public void addCell(String id, CellType type) {
+
+        switch (type) {
+
+        case RECTANGLE:
+            RectangleCell rectangleCell = new RectangleCell(id);
+            addCell(rectangleCell);
+            break;
+
+        case TRIANGLE:
+            TriangleCell triangleCell = new TriangleCell(id);
+            addCell(triangleCell);
+            break;
+        case CIRCLE:
+            CircleCell circleCell = new CircleCell(id);
+            addCell(circleCell);
+            break;
+
+        default:
+            throw new UnsupportedOperationException("Unsupported type: " + type);
+        }
+    }
+
+    private void addCell( Cell cell) {
+
+        addedCells.add(cell);
+
+        cellMap.put( cell.getCellId(), cell);
+
+    }
+    
+    public void delCell(Cell cell) {
+        
+        removedCells.add(cell);
+        
+        cellMap.remove(cell.getCellId());
+                
+    }
+    
+    public Cell getCell(String id) {
+        return cellMap.get(id);
+    }
+    
+    public void addEdge( String sourceId, String targetId) {
+
+        Cell sourceCell = cellMap.get( sourceId);
+        Cell targetCell = cellMap.get( targetId);
+
+        Edge edge = new Edge( sourceCell, targetCell);
+
+        addedEdges.add( edge);
+
+    }
+    
+    public void modEdge(String id) {
+        Cell cell = cellMap.get(id);
+        Cell lastCell = cellMap.get(getAllCells().get(getAllCells().size()-1).getCellId());
+        
+        for(Edge edge : allEdges) {
+            if(edge.getSource().equals(lastCell) || edge.getTarget().equals(lastCell))
+                removedEdges.add(edge);
+        }
+        
+        for(Edge edge : allEdges) {
+            if(edge.getSource().equals(cell)) {
+                edge.changeSource(lastCell);
+            }
+            else if(edge.getTarget().equals(cell)) {
+                edge.changeTarget(lastCell);
+            }      
+        }
+    }
+    
+
+    /**
+     * Attach all cells which don't have a parent to graphParent 
+     * @param cellList
+     */
+    public void attachOrphansToGraphParent( List<Cell> cellList) {
+
+        for( Cell cell: cellList) {
+            if( cell.getCellParents().size() == 0) {
+                graphParent.addCellChild( cell);
+            }
+        }
+
+    }
+
+    /**
+     * Remove the graphParent reference if it is set
+     * @param cellList
+     */
+    public void disconnectFromGraphParent( List<Cell> cellList) {
+
+        for( Cell cell: cellList) {
+            graphParent.removeCellChild( cell);
+        }
+    }
+
+    public void merge() {
+
+        // cells
+        allCells.addAll( addedCells);
+        allCells.removeAll( removedCells);
+
+        addedCells.clear();
+        removedCells.clear();
+
+        // edges
+        allEdges.addAll( addedEdges);
+        allEdges.removeAll( removedEdges);
+
+        addedEdges.clear();
+        removedEdges.clear();
+
+    }
+}

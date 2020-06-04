@@ -39,7 +39,7 @@
                         </Label>
                         <Button fx:id="btnStack" alignment="BASELINE_LEFT" layoutX="53.0" layoutY="73.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="169.0" styleClass="button1" stylesheets="@../application/application.css" text="Stack" />
                         <Button fx:id="btnList" alignment="BASELINE_LEFT" layoutX="53.0" layoutY="117.0" mnemonicParsing="false" onAction="#goLinkList" prefHeight="35.0" prefWidth="169.0" styleClass="button1" stylesheets="@../application/application.css" text="Linked List" />
-                        <Button fx:id="btnTree" alignment="BASELINE_LEFT" layoutX="53.0" layoutY="163.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="169.0" styleClass="button1" stylesheets="@../application/application.css" text="Balanced Tree" />
+                        <Button fx:id="btnTree" alignment="BASELINE_LEFT" layoutX="53.0" layoutY="163.0" mnemonicParsing="false" onAction="#goBalancedTree" prefHeight="35.0" prefWidth="169.0" styleClass="button1" stylesheets="@../application/application.css" text="Balanced Tree" />
                         <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/home.png" />
