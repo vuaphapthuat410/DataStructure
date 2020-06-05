@@ -76,6 +76,7 @@ public class StackActions extends VisualActions {
 			public void handle(ActionEvent actionEvent) {
 				ElementsList.pop();
 				General.deleteShape(pane, parentPane);
+				System.out.println("ELementsize:" + ElementsList.size());
 			}
 		});
 	}

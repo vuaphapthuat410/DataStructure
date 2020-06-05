@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TreeBuilder;
+package utils;
 
 /**
  *
  * @author vuaphapthuat410
  */
-public abstract class Layout {
-    public abstract void execute();
-    public abstract void update();
+import javafx.scene.layout.Pane;
+
+public class NodeLayer extends Pane {
+
 }

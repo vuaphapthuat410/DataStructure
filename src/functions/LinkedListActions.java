@@ -2,13 +2,13 @@ package functions;
 
 import java.util.LinkedList;
 
-import elements.Arrow;
 import elements.Element;
 import elements.ListElement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
+import utils.Arrow;
 
 public class LinkedListActions extends VisualActions{
 	

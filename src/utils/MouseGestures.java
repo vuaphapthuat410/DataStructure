@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TreeBuilder;
+package utils;
 
 /**
  *
@@ -12,7 +12,7 @@ package TreeBuilder;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
-import TreeBuilder.Graph;
+import utils.Graph;
 public class MouseGestures {
 
     final DragContext dragContext = new DragContext();

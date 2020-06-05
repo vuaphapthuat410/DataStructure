@@ -13,7 +13,7 @@ public class StackElement extends Element {
 	 
 		StackPane shapeElement = new StackPane(this.value);
 		shapeElement.setPrefHeight(43);
-		shapeElement.setPrefWidth(141);
+		shapeElement.setPrefWidth(142);
 			
 		shapeElement.setStyle("-fx-border-color: green");
 		

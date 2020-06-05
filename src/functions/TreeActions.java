@@ -1,14 +1,14 @@
 package functions;
 
-import TreeBuilder.Graph;
-import TreeBuilder.Layout;
-import TreeBuilder.Model;
 import elements.ShapeType;
 import elements.TreeElement;
 import javafx.animation.TranslateTransition;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import utils.Graph;
+import utils.Layout;
+import utils.Model;
 
 public class TreeActions extends VisualActions {
     

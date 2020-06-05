@@ -1,4 +1,4 @@
-package elements;
+package utils;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;

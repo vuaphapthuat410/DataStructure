@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package graph.model;
+package utils;
 
 /**
  *
@@ -14,27 +14,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import graph.cell.*;
-
-import graph.line.Edge;
+import elements.TreeElement;
+import elements.ShapeType;
 
 public class Model {
 
-    Cell graphParent;
+    TreeElement graphParent;
 
-    List<Cell> allCells;
-    List<Cell> addedCells;
-    List<Cell> removedCells;
+    List<TreeElement> allCells;
+    List<TreeElement> addedCells;
+    List<TreeElement> removedCells;
 
     List<Edge> allEdges;
     List<Edge> addedEdges;
     List<Edge> removedEdges;
 
-    Map<String,Cell> cellMap; // <id,cell>
+    Map<String,TreeElement> cellMap; // <id,cell>
 
     public Model() {
 
-         graphParent = new Cell( "_ROOT_");
+         graphParent = new TreeElement( "_ROOT_");
 
          // clear model, create lists
          clear();
@@ -59,15 +58,15 @@ public class Model {
         addedEdges.clear();
     }
 
-    public List<Cell> getAddedCells() {
+    public List<TreeElement> getAddedCells() {
         return addedCells;
     }
 
-    public List<Cell> getRemovedCells() {
+    public List<TreeElement> getRemovedCells() {
         return removedCells;
     }
 
-    public List<Cell> getAllCells() {
+    public List<TreeElement> getAllCells() {
         return allCells;
     }
 
@@ -83,30 +82,17 @@ public class Model {
         return allEdges;
     }
 
-    public void addCell(String id, CellType type) {
+    public void addCell(String id, ShapeType type) {
 
-        switch (type) {
-
-        case RECTANGLE:
-            RectangleCell rectangleCell = new RectangleCell(id);
-            addCell(rectangleCell);
-            break;
-
-        case TRIANGLE:
-            TriangleCell triangleCell = new TriangleCell(id);
-            addCell(triangleCell);
-            break;
-        case CIRCLE:
-            CircleCell circleCell = new CircleCell(id);
-            addCell(circleCell);
-            break;
-
-        default:
-            throw new UnsupportedOperationException("Unsupported type: " + type);
-        }
+        try {
+            TreeElement node = new TreeElement(id, type);
+            addCell(node);
+        } catch (Exception e) {
+            throw e;
+        }   
     }
 
-    private void addCell( Cell cell) {
+    private void addCell( TreeElement cell) {
 
         addedCells.add(cell);
 
@@ -114,7 +100,7 @@ public class Model {
 
     }
     
-    public void delCell(Cell cell) {
+    public void delCell(TreeElement cell) {
         
         removedCells.add(cell);
         
@@ -122,14 +108,14 @@ public class Model {
                 
     }
     
-    public Cell getCell(String id) {
+    public TreeElement getCell(String id) {
         return cellMap.get(id);
     }
     
     public void addEdge( String sourceId, String targetId) {
 
-        Cell sourceCell = cellMap.get( sourceId);
-        Cell targetCell = cellMap.get( targetId);
+        TreeElement sourceCell = cellMap.get( sourceId);
+        TreeElement targetCell = cellMap.get( targetId);
 
         Edge edge = new Edge( sourceCell, targetCell);
 
@@ -138,8 +124,8 @@ public class Model {
     }
     
     public void modEdge(String sourceId, String targetId) {
-        Cell sCell = cellMap.get(sourceId);
-        Cell tCell = cellMap.get(targetId);
+        TreeElement sCell = cellMap.get(sourceId);
+        TreeElement tCell = cellMap.get(targetId);
         
         for(Edge edge : allEdges) {
             if(edge.getSource().equals(tCell) || edge.getTarget().equals(tCell))
@@ -160,9 +146,9 @@ public class Model {
      * Attach all cells which don't have a parent to graphParent 
      * @param cellList
      */
-    public void attachOrphansToGraphParent( List<Cell> cellList) {
+    public void attachOrphansToGraphParent( List<TreeElement> cellList) {
 
-        for( Cell cell: cellList) {
+        for( TreeElement cell: cellList) {
             if( cell.getCellParents().size() == 0) {
                 graphParent.addCellChild( cell);
             }
@@ -174,9 +160,9 @@ public class Model {
      * Remove the graphParent reference if it is set
      * @param cellList
      */
-    public void disconnectFromGraphParent( List<Cell> cellList) {
+    public void disconnectFromGraphParent( List<TreeElement> cellList) {
 
-        for( Cell cell: cellList) {
+        for( TreeElement cell: cellList) {
             graphParent.removeCellChild( cell);
         }
     }

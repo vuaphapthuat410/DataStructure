@@ -89,8 +89,6 @@ public class ListController implements Initializable {
 	public void addItem(ActionEvent e) {
 		String value = tfValue.getText();
 		viLinkedList.add(value,pnListVisual);
-		printList();
-		System.out.println("Value input: " + value);
 		tfValue.clear();
 
 	}
@@ -98,7 +96,6 @@ public class ListController implements Initializable {
 	public void deleteItem(ActionEvent e) {
 		
 		viLinkedList.delete(pnListVisual);
-		printList();
 	}
 
 	public void addItemByIndex(ActionEvent e) {
@@ -114,7 +111,6 @@ public class ListController implements Initializable {
 
 		viLinkedList.addByIndex(value, index,pnListVisual);
 
-		printList();
 		tfValue.clear();
 		tfIndex.clear();
 	}
@@ -131,17 +127,8 @@ public class ListController implements Initializable {
 		
 		viLinkedList.deleteByIndex(index,pnListVisual);
 
-		printList();
 		tfIndex.clear();
 
 	}
-
-
-	public void printList() {
-		for (int i = 0; i < viLinkedList.getElementsList().size(); i++) {
-			System.out.println(viLinkedList.getElementsList().get(i).getValue().getText());
-		}
-	}
-
 
 }
