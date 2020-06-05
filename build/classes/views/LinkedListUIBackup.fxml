@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polygon?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="578.0" prefWidth="723.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ListController">
+   <bottom>
+      <Pane prefHeight="94.0" prefWidth="200.0" style="-fx-background-color: #b81616;" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane layoutX="14.0" layoutY="13.0" prefHeight="74.0" prefWidth="655.0">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="274.0" minWidth="10.0" prefWidth="210.0" />
+                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="441.0" minWidth="10.0" prefWidth="77.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="441.0" minWidth="10.0" prefWidth="156.0" />
+                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="315.0" minWidth="10.0" prefWidth="48.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="315.0" minWidth="10.0" prefWidth="220.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="41.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="41.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <TextField fx:id="tfValue" prefHeight="32.0" prefWidth="182.0" promptText="Value" />
+                  <TextField fx:id="tfIndex" prefHeight="32.0" promptText="Index" GridPane.rowIndex="1" />
+                  <Button fx:id="btnAddItem" maxWidth="125.0" mnemonicParsing="false" onAction="#addItem" prefHeight="30.0" prefWidth="125.0" styleClass="button2" stylesheets="@../application/application.css" text="Add Item" GridPane.columnIndex="2" />
+                  <Button fx:id="btnAddByIndex" alignment="CENTER" maxWidth="125.0" mnemonicParsing="false" onAction="#addItemByIndex" prefHeight="30.0" prefWidth="125.0" styleClass="button2" stylesheets="@../application/application.css" text="Add by Index" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Button fx:id="btnDelete" alignment="CENTER" maxWidth="125.0" mnemonicParsing="false" onAction="#deleteItem" prefHeight="30.0" prefWidth="125.0" styleClass="button2" stylesheets="@../application/application.css" text="Delete Item" GridPane.columnIndex="4" />
+                  <Button fx:id="btnDelByIndex" alignment="CENTER" maxWidth="125.0" mnemonicParsing="false" onAction="#deleteItemByIndex" prefHeight="30.0" prefWidth="125.0" styleClass="button2" stylesheets="@../application/application.css" text="Delete by index" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                     <image>
+                        <Image url="@../images/add.png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets right="10.0" top="2.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../images/add1.png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets right="10.0" top="3.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+                     <image>
+                        <Image url="@../images/delete.png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets right="3.0" top="3.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../images/trash.png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets right="3.0" top="3.0" />
+                     </GridPane.margin>
+                  </ImageView>
+               </children>
+            </GridPane>
+         </children>
+      </Pane>
+   </bottom>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+         <children>
+            <Pane fx:id="pnListVisual" prefHeight="489.0" prefWidth="723.0">
+               <children>
+                  <GridPane layoutX="128.0" layoutY="94.0" prefHeight="43.0" prefWidth="141.0" style="-fx-border-color: #000000; -fx-border-width: 1 1 1 1;">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.0" minWidth="10.0" prefWidth="88.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="64.0" minWidth="10.0" prefWidth="51.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <AnchorPane prefHeight="41.0" prefWidth="101.0" style="-fx-background-color: #ff6a00; -fx-border-color: #000000; -fx-border-width: 0 1 0 0;">
+                           <children>
+                              <Label layoutX="26.0" layoutY="13.0" text="Label" textFill="#e1d7d7" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="30.0" prefWidth="21.0" style="-fx-background-color: #8510e6;" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="430.0" layoutY="94.0" prefHeight="43.0" prefWidth="141.0" style="-fx-border-color: #000000; -fx-border-width: 1 1 1 1;">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.0" minWidth="10.0" prefWidth="88.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="64.0" minWidth="10.0" prefWidth="51.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <AnchorPane prefHeight="41.0" prefWidth="101.0" style="-fx-background-color: #ff6a00; -fx-border-color: #000000; -fx-border-width: 0 1 0 0;">
+                           <children>
+                              <Label layoutX="26.0" layoutY="13.0" text="Label" textFill="#e1d7d7" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="30.0" prefWidth="21.0" style="-fx-background-color: #8510e6;" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="128.0" layoutY="274.0" prefHeight="43.0" prefWidth="142.0" style="-fx-border-color: #000000; -fx-border-width: 1 1 1 1;">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.0" minWidth="10.0" prefWidth="88.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="64.0" minWidth="10.0" prefWidth="51.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <AnchorPane prefHeight="41.0" prefWidth="101.0" style="-fx-background-color: #ff6a00; -fx-border-color: #000000; -fx-border-width: 0 1 0 0;">
+                           <children>
+                              <Label layoutX="26.0" layoutY="13.0" text="Label" textFill="#e1d7d7" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="30.0" prefWidth="21.0" style="-fx-background-color: #8510e6;" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="128.0" layoutY="184.0" prefHeight="43.0" prefWidth="141.0" style="-fx-border-color: #000000; -fx-border-width: 1 1 1 1;">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.0" minWidth="10.0" prefWidth="88.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="64.0" minWidth="10.0" prefWidth="51.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <AnchorPane prefHeight="41.0" prefWidth="101.0" style="-fx-background-color: #ff6a00; -fx-border-color: #000000; -fx-border-width: 0 1 0 0;">
+                           <children>
+                              <Label layoutX="26.0" layoutY="13.0" text="Label" textFill="#e1d7d7" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="30.0" prefWidth="21.0" style="-fx-background-color: #8510e6;" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="430.0" layoutY="184.0" prefHeight="43.0" prefWidth="141.0" style="-fx-border-color: #000000; -fx-border-width: 1 1 1 1;">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.0" minWidth="10.0" prefWidth="88.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="64.0" minWidth="10.0" prefWidth="51.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <AnchorPane prefHeight="41.0" prefWidth="101.0" style="-fx-background-color: #ff6a00; -fx-border-color: #000000; -fx-border-width: 0 1 0 0;">
+                           <children>
+                              <Label layoutX="26.0" layoutY="13.0" text="Label" textFill="#e1d7d7" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="30.0" prefWidth="21.0" style="-fx-background-color: #8510e6;" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="128.0" layoutY="364.0" prefHeight="43.0" prefWidth="141.0" style="-fx-border-color: #000000; -fx-border-width: 1 1 1 1;">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.0" minWidth="10.0" prefWidth="88.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="64.0" minWidth="10.0" prefWidth="51.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <AnchorPane prefHeight="41.0" prefWidth="101.0" style="-fx-background-color: #ff6a00; -fx-border-color: #000000; -fx-border-width: 0 1 0 0;">
+                           <children>
+                              <Label layoutX="26.0" layoutY="13.0" text="Label" textFill="#e1d7d7" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="30.0" prefWidth="21.0" style="-fx-background-color: #8510e6;" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="430.0" layoutY="364.0" prefHeight="43.0" prefWidth="141.0" style="-fx-border-color: #000000; -fx-border-width: 1 1 1 1;">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.0" minWidth="10.0" prefWidth="88.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="64.0" minWidth="10.0" prefWidth="51.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <AnchorPane prefHeight="41.0" prefWidth="101.0" style="-fx-background-color: #ff6a00; -fx-border-color: #000000; -fx-border-width: 0 1 0 0;">
+                           <children>
+                              <Label layoutX="26.0" layoutY="13.0" text="Label" textFill="#e1d7d7" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="30.0" prefWidth="21.0" style="-fx-background-color: #8510e6;" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+                  <Group fx:id="arrowD4" layoutX="374.0" layoutY="401.0">
+                     <children>
+                        <Line endX="43.0" endY="-58.5" layoutX="-7.0" layoutY="44.0" startX="-98.0" startY="-59.5" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeWidth="4.0" style="-fx-border-color: #000000; -fx-border-width: 3 0 3 0;" />
+                        <Polygon disable="true" layoutX="69.0" layoutY="-13.0" points="-33.0, -11.0, -33.0, 8.0, -12.0, -1.0" stroke="BLACK" strokeType="INSIDE" />
+                     </children>
+                  </Group>
+                  <BorderPane layoutX="276.0" layoutY="-513.0" prefHeight="200.0" prefWidth="0.0" />
+                  <GridPane layoutX="430.0" layoutY="274.0" prefHeight="43.0" prefWidth="141.0" style="-fx-border-color: #000000; -fx-border-width: 1 1 1 1;">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.0" minWidth="10.0" prefWidth="88.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="64.0" minWidth="10.0" prefWidth="51.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <AnchorPane prefHeight="41.0" prefWidth="101.0" style="-fx-background-color: #ff6a00; -fx-border-color: #000000; -fx-border-width: 0 1 0 0;">
+                           <children>
+                              <Label layoutX="26.0" layoutY="13.0" text="Label" textFill="#e1d7d7" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="30.0" prefWidth="21.0" style="-fx-background-color: #8510e6;" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+                  <Group fx:id="arrowD6" layoutX="651.0" layoutY="253.0">
+                     <children>
+                        <Line endX="-98.0" endY="-23.0" layoutX="-7.0" layoutY="44.0" startX="-98.0" startY="-59.5" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeWidth="4.0" style="-fx-border-color: #000000; -fx-border-width: 3 0 3 0;" />
+                        <Polygon disable="true" layoutX="-72.0" layoutY="-6.0" points="-33.0, -17.999984741210938, -48.0, -1.0, -18.0, -1.0" stroke="BLACK" strokeType="INSIDE" />
+                     </children>
+                  </Group>
+                  <Group fx:id="arrowD5" layoutX="651.0" layoutY="343.0">
+                     <children>
+                        <Line endX="-98.0" endY="-23.0" layoutX="-7.0" layoutY="44.0" startX="-98.0" startY="-59.5" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeWidth="4.0" style="-fx-border-color: #000000; -fx-border-width: 3 0 3 0;" />
+                        <Polygon disable="true" layoutX="-72.0" layoutY="-6.0" points="-33.0, -17.999984741210938, -48.0, -1.0, -18.0, -1.0" stroke="BLACK" strokeType="INSIDE" />
+                     </children>
+                  </Group>
+                  <Group fx:id="arrowD7" layoutX="651.0" layoutY="163.0">
+                     <children>
+                        <Line endX="-98.0" endY="-23.0" layoutX="-7.0" layoutY="44.0" startX="-98.0" startY="-59.5" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeWidth="4.0" style="-fx-border-color: #000000; -fx-border-width: 3 0 3 0;" />
+                        <Polygon disable="true" layoutX="-72.0" layoutY="-6.0" points="-33.0, -17.999984741210938, -48.0, -1.0, -18.0, -1.0" stroke="BLACK" strokeType="INSIDE" />
+                     </children>
+                  </Group>
+                  <Group fx:id="arrowD1" layoutX="344.0" layoutY="143.0">
+                     <children>
+                        <Line endX="-98.0" endY="-18.0" layoutX="-7.0" layoutY="44.0" startX="-98.0" startY="-50.0" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeWidth="4.0" style="-fx-border-color: #000000; -fx-border-width: 3 0 3 0;" />
+                        <Polygon disable="true" layoutX="-72.0" layoutY="27.0" points="-33.0, 14.0, -48.0, -1.0, -18.0, -1.0" stroke="BLACK" strokeType="INSIDE" />
+                     </children>
+                  </Group>
+                  <Group fx:id="arrowD2" layoutX="344.0" layoutY="234.0">
+                     <children>
+                        <Line endX="-98.0" endY="-18.0" layoutX="-7.0" layoutY="44.0" startX="-98.0" startY="-50.0" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeWidth="4.0" style="-fx-border-color: #000000; -fx-border-width: 3 0 3 0;" />
+                        <Polygon disable="true" layoutX="-72.0" layoutY="27.0" points="-33.0, 14.0, -48.0, -1.0, -18.0, -1.0" stroke="BLACK" strokeType="INSIDE" />
+                     </children>
+                  </Group>
+                  <Group fx:id="arrowD3" layoutX="344.0" layoutY="324.0">
+                     <children>
+                        <Line endX="-98.0" endY="-18.0" layoutX="-7.0" layoutY="44.0" startX="-98.0" startY="-50.0" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeWidth="4.0" style="-fx-border-color: #000000; -fx-border-width: 3 0 3 0;" />
+                        <Polygon disable="true" layoutX="-72.0" layoutY="27.0" points="-33.0, 14.0, -48.0, -1.0, -18.0, -1.0" stroke="BLACK" strokeType="INSIDE" />
+                     </children>
+                  </Group>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
