@@ -3,7 +3,7 @@ package functions;
 import java.util.LinkedList;
 
 import elements.Element;
-import elements.creators.StackElementCreator;
+import elements.StackElement;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,7 +22,7 @@ public class StackActions extends VisualActions {
 		// TODO Auto-generated method stub
 		if (ElementsList.size() >= General.MAX_STACK_SIZE) {
 //			General.showAlertWithoutHeaderText("Alert", "You can only create " + General.MAX_STACK_SIZE + " elements");
-			Element overflow = StackElementCreator.createElement("OVERFLOW!!!");
+			Element overflow = new StackElement("OVERFLOW!!!");
 			overflow.getShape().setLayoutX(291);
 			overflow.getShape().setLayoutY(53);
 			TranslateTransition wayHorizontal = new TranslateTransition(Duration.seconds(1), overflow.getShape());
@@ -40,7 +40,7 @@ public class StackActions extends VisualActions {
 			
 			return false;
 		}
-		Element node = StackElementCreator.createElement(value);
+		Element node = new StackElement(value);
 		ElementsList.push(node);
 
 		node.getShape().setLayoutX(291);

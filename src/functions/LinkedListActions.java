@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 import elements.Arrow;
 import elements.Element;
-import elements.creators.ListElementCreator;
+import elements.ListElement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
@@ -45,7 +45,7 @@ public class LinkedListActions extends VisualActions{
 			General.showAlertWithoutHeaderText("Alert", "You can only create 8 elements");
 			return false;
 		}
-		Element node = ListElementCreator.createElement(value);
+		Element node = new ListElement(value);
 		ElementsList.addLast(node);
 		
 //		Set layout for new element
@@ -127,7 +127,7 @@ public class LinkedListActions extends VisualActions{
 				General.FadeInOut(arrowList.get(i-1), 1, 0, 1);
 		}
 
-		Element node = ListElementCreator.createElement(value);
+		Element node = new ListElement(value);
 		Pane temp;
 		for(int i=index;i<ElementsList.size();i++) {
 			temp = ElementsList.get(i).getShape();

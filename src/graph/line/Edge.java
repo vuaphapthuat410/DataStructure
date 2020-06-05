@@ -52,9 +52,14 @@ public class Edge extends Group {
     public void changeSource(Cell source) {
         this.target.getCellParents().remove(this.source);
         this.source.getCellChildren().remove(this.target);
+        
         this.source = source;
         this.source.addCellChild(this.target);
         this.target.addCellParent(source);     
+        
+        line.startXProperty().bind( source.layoutXProperty().add(source.getBoundsInParent().getWidth() / 2.0));
+        line.startYProperty().bind( source.layoutYProperty().add(source.getBoundsInParent().getHeight() / 2.0));
+        
     }
     
     public void changeTarget(Cell target) {
@@ -62,7 +67,11 @@ public class Edge extends Group {
         this.source.getCellChildren().remove(this.target);
         this.target = target;
         this.source.addCellChild(this.target);
-        this.target.addCellParent(this.source);   
+        this.target.addCellParent(this.source); 
+        
+        line.endXProperty().bind( target.layoutXProperty().add( target.getBoundsInParent().getWidth() / 2.0));
+        line.endYProperty().bind( target.layoutYProperty().add( target.getBoundsInParent().getHeight() / 2.0));  
+        
     }
 
 }
