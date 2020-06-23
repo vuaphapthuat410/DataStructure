@@ -27,7 +27,7 @@
                               <Image url="@../images/avatar1.jpeg" />
                            </image>
                         </ImageView>
-                        <Label layoutX="83.0" layoutY="153.0" text="Team 16" textFill="WHITE" />
+                        <Label layoutX="83.0" layoutY="153.0" text="Team 14" textFill="WHITE" />
                      </children>
                   </Pane>
                   <Pane prefHeight="288.0" prefWidth="224.0">
